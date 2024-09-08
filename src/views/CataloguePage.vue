@@ -6,7 +6,7 @@
         <h2>Vêtements de Fille</h2>
         <p>Découvrez notre sélection de vêtements pour filles.</p>
       </router-link>
-      <router-link to="/catalogue/Vêtementgarcons" class="category">
+      <router-link to="/catalogue/VêtementGarcons" class="category">
         <h2>Vêtements de Garçon</h2>
         <p>Explorez notre gamme de vêtements pour garçons.</p>
       </router-link>

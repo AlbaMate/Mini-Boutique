@@ -1,11 +1,11 @@
-<template>
+<!-- <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
    <h2>
      <p>
-      Top Sélection
+      Top Sélection -->
       <!--<a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.   --> 
-    </p>
+    <!-- </p> -->
   </h2>
     <!--
     <h3>Installed CLI Plugins</h3>
@@ -21,17 +21,21 @@
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Fille de 2 à 14 ans </a></li>
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
-    <h3>Ecosystem</h3>
-    <ul>
+    <h3>Ecosystem</h3>    -->
+    
+    <!-- <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
       <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    -->
+     -->
 
-    <div class="image-gallery">
+
+
+
+    <!-- <div class="image-gallery">
       <div class="gallery-item">
         <div class="gallery">
             <img src="@/assets/image1.jpg" alt="Pantalon 1" class="gallery-image">
@@ -98,19 +102,19 @@
       </div>
     </div>
   </div>
-</template>
+</template> -->
 
-<script>
+<!-- <script>
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   }
 }
-</script>
+</script> -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<!-- <style scoped>
 h2 {
   margin: 40px 0 0;
   font-size: 300%;
@@ -172,4 +176,4 @@ p {
 .description {
   padding: 10% 0;
 }
-</style>
+</style> -->

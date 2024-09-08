@@ -1,17 +1,42 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import VetementsFilles from "../views/VetementsFilles.vue";
-import VetementsGarcons from "../views/VetementsGarcon.vue";
+
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeInfo from '../views/HomeInfo.vue';
+import CataloguePage from '@/views/CataloguePage.vue';
+import ImageCard from '@/components/ImageCard.vue';
+// import VetementsFille from '@/components/VetementsFille.vue';
+// import VetementsGarcon from '@/components/VetementsGarcon.vue';
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/views/vetements-filles", component: VetementsFilles },
-  { path: "/views/vetements-garcons", component: VetementsGarcons },
+  {
+    path: '/',
+    name: 'HomeInfo',
+    component: HomeInfo
+  },
+  {
+    path: '/',
+    name: 'Catalogue',
+    component: CataloguePage
+  },
+  {
+    path: '/',
+    name: 'ImageCard',
+    component: ImageCard
+  },
+  // {
+  //   path: '/VetementsFille',
+  //   name: 'VetementsFille',
+  //   component: VetementsFille
+  // },
+  // {
+  //   path: '/vetementsGarcon',
+  //   name: 'VetementsGarcon',
+  //   component: VetementsGarcon
+  // }
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 });
 
 export default router;
