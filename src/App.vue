@@ -31,7 +31,7 @@ export default {
   padding-top: 60px; /* Ajuste en fonction de la hauteur de la navbar */
 }
 h1{
-  font-size: 260%;
+  font-size: 350%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 

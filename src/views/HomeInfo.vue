@@ -95,10 +95,11 @@ export default {
 
 .phrase-container h1 {
   color: #d3400ac7; /* Couleur du texte bleue pour correspondre à la bordure */
-  font-size: 2.5em; /* Taille de la police, assez grande pour être accrocheuse */
+  font-size: 2.9em; /* Taille de la police, assez grande pour être accrocheuse */
   font-weight: bold; /* Texte en gras pour plus de visibilité */
   margin: 0; /* Supprimer la marge par défaut du <h1> */
   padding: 0; /* Supprimer le rembourrage par défaut du <h1> */
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 

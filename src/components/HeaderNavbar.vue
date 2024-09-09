@@ -61,7 +61,7 @@ header {
   padding: 12px 20px; /* Ajustez les paddings selon vos besoins */
 }
 .fas {
-  color: #e16a2e; /* La même couleur que pour les autres éléments */
+  color: #ea8989; /* La même couleur que pour les autres éléments */
 }
 
 /* Style de la navbar */
@@ -127,6 +127,10 @@ header {
 
 .navbar-icons li {
   margin-left: 20px;
+}
+
+.navbar-icons .fas {
+  font-size: 24px; /* Ajuste la taille des icônes selon tes besoins */
 }
 
 /* Style du formulaire de recherche */
