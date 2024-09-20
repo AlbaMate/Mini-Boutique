@@ -45,7 +45,7 @@ export default {
           id: 1,
        name: "Vêtement d'été pour garçon",
 description: "Un ensemble décontracté et confortable, parfait pour les journées chaudes.",
-          price: 29.99,
+          price: "A partir de 29.99",
           image: "CatalogueGarçon/été1.jpg",
           additionalImages: [
       "CatalogueGarçon/été1.jpg",
@@ -67,7 +67,7 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
           id: 2,
           name: "Ensemble de vêtements pour garçon",
           description: "Un ensemble adorable pour les nouveau-nés.",
-          price: 19.99,
+          price: "A partir de 25.99",
           image: "CatalogueGarçon/combi1.jpeg",
           additionalImages: [
             "CatalogueGarçon/combi2.jpg",
@@ -85,7 +85,7 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
           id: 3,
           name: "Vêtements d'anniversaire pour garçon",
           description: "Une tenue festive et élégante pour célébrer les anniversaires",
-          price: 19.99,
+          price: "A partir de 50.99",
           image: "CatalogueGarçon/anniv1.jpg",
           additionalImages: [
             "CatalogueGarçon/anniv2.webp",
@@ -112,6 +112,7 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
 
 </script>
 
+
 <style scoped>
 .catalogue {
   padding: 20px;
@@ -119,76 +120,25 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
 
 .clothes-grid {
   display: flex;
-  flex-wrap: wrap; /* Permet aux cartes de se repositionner si l'espace est insuffisant */
-  gap: 20px; /* Ajoute de l'espace entre les cartes */
-  justify-content: space-between; /* Distribue les cartes horizontalement */
-}
-
-.clothes-card {
-  flex: 1 1 calc(30% - 20px); /* Chaque carte prend environ 30% de la largeur du conteneur */
-  max-width: 300px; /* Largeur maximale pour chaque carte */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour chaque carte */
-  border-radius: 8px; /* Coins arrondis */
-  overflow: hidden; /* Cache les débordements */
-  background-color: #fff; /* Couleur de fond blanche */
-  transition: transform 0.3s ease; /* Transition pour l'effet de survol */
-  margin-bottom: 20px; /* Ajoute de l'espace en bas pour éviter que les cartes soient collées verticalement */
-}
-
-.clothes-card:hover {
-  transform: scale(1.05); /* Agrandissement léger au survol */
-}
-
-.clothes-image {
-  width: 100%;
-  height: auto;
-}
-
-.additional-images {
-  display: flex;
-  justify-content: center; /* Centre les images supplémentaires */
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.additional-image {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.additional-image:hover {
-  transform: scale(1.1);
-}
-</style>
-
-<!-- <style scoped>
-.catalogue {
-  padding: 20px;
-}
-
-.clothes-grid {
-  display: flex;
-  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante si nécessaire */
-  gap: 0px; /* Espace entre les cartes */
-  justify-content: flex-start; /* Aligne les cartes à gauche */
+  justify-content: space-around; /* Espacement uniforme autour des cartes */
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
 }
 
 .clothes-card {
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  width: 300px; /* Ajuste la largeur des cartes selon tes besoins */
+  width: 1200px; /* Ajuste la largeur des cartes selon tes besoins */
   display: flex;
   flex-direction: column; /* Les éléments dans chaque carte s'affichent en colonne */
   gap: 10px; /* Espace entre les éléments internes */
+  margin: 10px; /* Espace autour de chaque carte */
 }
 
 .main-image-container {
   position: relative;
   width: 100%;
-  height: 200px; /* Ajuste la hauteur pour la taille désirée */
+  height: 270px; /* Ajuste la hauteur pour la taille désirée */
   overflow: hidden;
   display: flex;
   justify-content: center; /* Centre l'image principale horizontalement */
@@ -211,8 +161,8 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
 }
 
 .additional-image {
-  width: 80px; /* Taille des icônes, ajustable selon tes besoins */
-  height: 80px;
+  width: 160px; /* Taille des icônes, ajustable selon tes besoins */
+  height: 150px;
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.3s ease; /* Transition dynamique */
@@ -238,4 +188,89 @@ description: "Un ensemble décontracté et confortable, parfait pour les journé
 .fade-enter, .fade-leave-to /* .fade-leave-active dans <2.1.8 */ {
   opacity: 0;
 }
-</style> -->
+</style>
+
+
+
+
+
+
+
+
+
+
+ <!-- /* <style scoped>
+.catalogue {
+  padding: 20px;
+}
+
+.clothes-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante si nécessaire */ -->
+  <!-- /* gap: 0px; /* Espace entre les cartes */
+  /* justify-content: flex-start; Aligne les cartes à gauche */
+/* } */
+
+/* .clothes-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;  */
+  /* display: flex;
+  flex-direction: column; /* Les éléments dans chaque carte s'affichent en colonne */
+  /* gap: 10px; Espace entre les éléments internes */
+/* }
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Ajuste la hauteur pour la taille désirée */
+  /* overflow: hidden;
+  display: flex;
+  justify-content: center; /* Centre l'image principale horizontalement */
+  /* align-items: center; Centre l'image principale verticalement */
+/* } */ 
+
+/* .clothes-image {
+  width: auto;
+  height: 100%; /* Ajuste la hauteur à 100% du conteneur */
+  /* object-fit: cover; /* Assure que l'image remplit le conteneur sans déformation */
+  /* transition: transform 0.3s ease;
+}  */ 
+
+/* .additional-images {
+  display: flex;
+  flex-direction: row; /* Affichage horizontal des images supplémentaires */
+  /* gap: 20px; /* Espace entre les icônes */
+  /* padding: 10px;
+  overflow-x: auto; Permet le défilement horizontal si les images débordent */
+/* }
+
+.additional-image {
+  width: 80px; 
+  height: 80px;
+  object-fit: cover; */
+  /* cursor: pointer;
+  transition: transform 0.3s ease; 
+}
+
+.additional-image:hover {
+  transform: scale(1.1); 
+}
+
+.clothes-info {
+  padding: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+}
+</style>  */   -->

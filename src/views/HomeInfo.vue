@@ -1,5 +1,7 @@
 <template>
-  
+   <div id="app">
+    <img alt="Vue vêtement" src="@/assets/pret-a-porter-accueil-2.jpg" class="main-image" />
+  </div>
   <div class="home-info">
     <h1>Bienvenue dans notre boutique de vêtements pour enfants</h1>
     <div class="phrase-container">

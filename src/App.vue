@@ -1,12 +1,10 @@
 
 <template>
    <h1>Bienvenue à notre boutique Douce Etoile</h1>
-  <div id="app">
-    <img alt="Vue vêtement" src="./assets/pret-a-porter-accueil-2.jpg" class="main-image" />
-   
+ 
     <HeaderNavbar />
     <router-view />
-  </div>
+ 
 </template>
 
 <script>

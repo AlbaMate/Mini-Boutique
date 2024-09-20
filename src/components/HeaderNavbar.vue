@@ -5,11 +5,11 @@
         <input type="text" placeholder="Search" />
       </form>
       <ul class="nav-list">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="@/VetementsFille.vue">Accueil</a>
-        </li>
+        </li> -->
         <li class="nav-item" @click="toggleDropdown">
-          Catalogue
+          <a href="#" class="catalogue-link">Catalogue</a>
           <ul v-if="isDropdownOpen" class="dropdown">
             <li class="dropdown-item">
               <router-link to="/VetementsFille">Vêtement de Fille</router-link>
@@ -28,6 +28,7 @@
     </nav>
   </header>
 </template>
+
 
 <script>
 export default {

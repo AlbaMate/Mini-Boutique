@@ -45,7 +45,7 @@ export default {
           id: 1,
           name: "Robe d'été pour fille",
           description: "Une robe légère et confortable, idéale pour l'été.",
-          price: 29.99,
+          price: "A partir de 29.99",
           image: "CatalogueFille/été1.webp",
           additionalImages: [
             "CatalogueFille/été2.webp",
@@ -65,7 +65,7 @@ export default {
           id: 2,
           name: "Ensemble de vêtements pour bébé fille",
           description: "Un ensemble adorable pour les nouveau-nés.",
-          price: 19.99,
+          price: " A partir de 35.99",
           image: "CatalogueFille/combi1.webp",
           additionalImages: [
             "CatalogueFille/combi2.webp",
@@ -81,7 +81,7 @@ export default {
           id: 3,
           name: "Vêtements d'anniversaire pour fille",
           description: "Une tenue festive et élégante pour célébrer les anniversaires",
-          price: 19.99,
+          price: "A partir de 50.99",
           image: "CatalogueFille/robe3.avif",
           additionalImages: [
             "CatalogueFille/robe1.webp",
@@ -114,47 +114,73 @@ export default {
 
 .clothes-grid {
   display: flex;
-  flex-wrap: wrap; /* Permet aux cartes de se repositionner si l'espace est insuffisant */
-  gap: 20px; /* Ajoute de l'espace entre les cartes */
-  justify-content: space-between; /* Distribue les cartes horizontalement */
+  justify-content: space-around; /* Espacement uniforme autour des cartes */
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
 }
 
 .clothes-card {
-  flex: 1 1 calc(30% - 20px); /* Chaque carte prend environ 30% de la largeur du conteneur */
-  max-width: 300px; /* Largeur maximale pour chaque carte */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour chaque carte */
-  border-radius: 8px; /* Coins arrondis */
-  overflow: hidden; /* Cache les débordements */
-  background-color: #fff; /* Couleur de fond blanche */
-  transition: transform 0.3s ease; /* Transition pour l'effet de survol */
-  margin-bottom: 20px; /* Ajoute de l'espace en bas pour éviter que les cartes soient collées verticalement */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 1200px; /* Ajuste la largeur des cartes selon tes besoins */
+  display: flex;
+  flex-direction: column; /* Les éléments dans chaque carte s'affichent en colonne */
+  gap: 10px; /* Espace entre les éléments internes */
+  margin: 10px; /* Espace autour de chaque carte */
 }
 
-.clothes-card:hover {
-  transform: scale(1.05); /* Agrandissement léger au survol */
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 270px; /* Ajuste la hauteur pour la taille désirée */
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Centre l'image principale horizontalement */
+  align-items: center; /* Centre l'image principale verticalement */
 }
 
 .clothes-image {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%; /* Ajuste la hauteur à 100% du conteneur */
+  object-fit: cover; /* Assure que l'image remplit le conteneur sans déformation */
+  transition: transform 0.3s ease; /* Transition dynamique */
 }
 
 .additional-images {
   display: flex;
-  justify-content: center; /* Centre les images supplémentaires */
-  gap: 10px;
-  margin-top: 10px;
+  flex-direction: row; /* Affichage horizontal des images supplémentaires */
+  gap: 20px; /* Espace entre les icônes */
+  padding: 10px;
+  overflow-x: auto; /* Permet le défilement horizontal si les images débordent */
 }
 
 .additional-image {
-  width: 50px;
-  height: auto;
+  width: 160px; /* Taille des icônes, ajustable selon tes besoins */
+  height: 150px;
+  object-fit: cover;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; /* Transition dynamique */
 }
 
 .additional-image:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Légère augmentation de la taille au survol */
+}
+
+.clothes-info {
+  padding: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+/* Transitions pour les images */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active dans <2.1.8 */ {
+  opacity: 0;
 }
 </style>
 
