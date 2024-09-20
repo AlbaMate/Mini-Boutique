@@ -5,11 +5,9 @@
         <input type="text" placeholder="Search" />
       </form>
       <ul class="nav-list">
-        <!-- <li class="nav-item">
-          <a href="@/VetementsFille.vue">Accueil</a>
-        </li> -->
-        <li class="nav-item" @click="toggleDropdown">
-          <a href="#" class="catalogue-link">Catalogue</a>
+        <!-- Menu "Catalogue" -->
+        <li class="nav-item">
+          <a href="#" class="catalogue-link" @click.prevent="toggleDropdown">Catalogue</a>
           <ul v-if="isDropdownOpen" class="dropdown">
             <li class="dropdown-item">
               <router-link to="/VetementsFille">Vêtement de Fille</router-link>
@@ -20,23 +18,31 @@
           </ul>
         </li>
       </ul>
-      <ul class="navbar-icons">
-  <li @click="toggleUserMenu">
-    <a href="#"><i class="fas fa-user"></i></a>
-    <ul v-if="isUserMenuOpen" class="user-menu">
-      <li class="user-menu-item">Profil</li>
-      <li class="user-menu-item">Paramètres</li>
-      <li class="user-menu-item">Déconnexion</li>
-    </ul>
-  </li>
-  <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-  <li><a href="#"><i class="fas fa-heart"></i></a></li>
-</ul>
 
+      <!-- Menu utilisateur -->
+      <ul class="navbar-icons">
+        <li class="nav-item">
+          <a href="#" class="user-link" @click.prevent="toggleUserMenu">
+            <i class="fas fa-user"></i>
+          </a>
+          <ul v-if="isUserMenuOpen" class="dropdown">
+            <li class="dropdown-item">
+              <router-link to="/ProfilUser">Profil</router-link>
+            </li>
+            <li class="dropdown-item">
+              <router-link to="/SettingUser">Paramètres</router-link>
+            </li>
+            <li class="dropdown-item">
+              <router-link to="/PanierUser">Déconnexion</router-link>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="#"><i class="fas fa-heart"></i></a></li>
+      </ul>
     </nav>
   </header>
 </template>
-
 
 <script>
 export default {
@@ -44,7 +50,7 @@ export default {
   data() {
     return {
       isDropdownOpen: false,
-      isUserMenuOpen: false, 
+      isUserMenuOpen: false,
     };
   },
   mounted() {
@@ -56,48 +62,65 @@ export default {
   methods: {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
+      if (this.isUserMenuOpen) {
+        this.isUserMenuOpen = false;
+      }
     },
     toggleUserMenu() {
-      this.isUserMenuOpen = !this.isUserMenuOpen; 
+      this.isUserMenuOpen = !this.isUserMenuOpen;
+      if (this.isDropdownOpen) {
+        this.isDropdownOpen = false;
+      }
     },
     handleClickOutside(event) {
       const userMenu = this.$el.querySelector(".user-menu");
-      if (userMenu && !userMenu.contains(event.target)) {
-        this.isUserMenuOpen = false; // Ferme le menu si on clique à l'extérieur
+      const dropdown = this.$el.querySelector(".dropdown");
+      if (
+        this.isUserMenuOpen &&
+        userMenu &&
+        !userMenu.contains(event.target) &&
+        !this.$el.querySelector(".fa-user").contains(event.target)
+      ) {
+        this.isUserMenuOpen = false;
+      }
+      if (
+        this.isDropdownOpen &&
+        dropdown &&
+        !dropdown.contains(event.target) &&
+        !this.$el.querySelector(".catalogue-link").contains(event.target)
+      ) {
+        this.isDropdownOpen = false;
       }
     },
   },
 };
 </script>
 
-
 <style scoped>
-/* Style du header */
+/* Styles de base */
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color:  #ebad86; /* Couleur de fond de la navbar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel, pour ajouter une ombre */
-  z-index: 1000; /* Assure que la navbar est au-dessus des autres éléments */
+  background-color: #ebad86;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px; /* Ajustez les paddings selon vos besoins */
+  padding: 12px 20px;
 }
 .fas {
-  color: #ea8989; /* La même couleur que pour les autres éléments */
+  color: #ea8989;
 }
 
-/* Style de la navbar */
 .navbar {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-/* Style de la liste de navigation */
 .nav-list {
   display: flex;
   list-style: none;
@@ -105,7 +128,6 @@ header {
   padding: 0;
 }
 
-/* Style des éléments de la liste de navigation */
 .nav-item {
   position: relative;
   margin-right: 20px;
@@ -116,7 +138,6 @@ header {
   color: #333;
 }
 
-/* Style pour le menu déroulant */
 .dropdown {
   display: none;
   position: absolute;
@@ -135,15 +156,14 @@ header {
 
 .dropdown-item a {
   text-decoration: none;
-  color:brown;
+  color: brown;
 }
 
-/* Affiche le menu déroulant lorsque la classe est active */
+/* Affiche le menu dropdown lors du v-if */
 .nav-item:hover .dropdown {
   display: block;
 }
 
-/* Style des icônes de la navbar */
 .navbar-icons {
   display: flex;
   list-style: none;
@@ -156,19 +176,18 @@ header {
 }
 
 .navbar-icons .fas {
-  font-size: 24px; /* Ajuste la taille des icônes selon tes besoins */
+  font-size: 24px;
 }
 
-/* Style du formulaire de recherche */
 .search-form {
-  margin-right: auto; /* Assure que le formulaire est aligné à gauche */
+  margin-right: auto;
 }
 
 .search-form input {
-  padding: 10px; /* Ajoute un padding intérieur pour améliorer l'apparence */
-  font-size: 16px; /* Ajuste la taille de la police pour que le texte soit plus grand */
-  border: 1px solid #ddd; /* Ajoute une bordure légère */
-  border-radius: 5px; /* Ajoute des coins arrondis */
-  width: 300px; /* Ajuste la largeur du champ de recherche */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 300px;
 }
 </style>
