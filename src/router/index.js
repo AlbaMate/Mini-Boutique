@@ -5,8 +5,8 @@ import CataloguePage from '@/views/CataloguePage.vue';
 import ImageCard from '@/components/ImageCard.vue';
 import VetementsFille from '@/components/VetementsFille.vue';
 import VetementsGarcon from '@/components/VetementsGarcon.vue';
-// import VetementsFille from '@/components/VetementsFille.vue';
-// import VetementsGarcon from '@/components/VetementsGarcon.vue';
+import SettingsComponent from '@/components/SettingsComponent.vue';
+import ProfilComponent from '@/components/ProfilComponent.vue';
 
 const routes = [
   {
@@ -33,6 +33,16 @@ const routes = [
     path: '/vetementsGarcon',
     name: 'VetementsGarcon',
     component: VetementsGarcon
+  },
+  {
+    path: '/settingsComponent',
+    name: 'SettingsComponent',
+    component: SettingsComponent
+  },
+  {
+    path: '/profilComponent',
+    name: 'ProfilComponent',
+    component: ProfilComponent
   }
 ];
 

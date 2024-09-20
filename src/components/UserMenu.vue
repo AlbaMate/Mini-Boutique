@@ -8,7 +8,7 @@
         <router-link to="/settings">Paramètres</router-link>
       </li>
       <li>
-        <router-link to="/logout">Déconnexion</router-link>
+        <router-link to="/LogoutComponent">Déconnexion</router-link>
       </li>
     </ul>
   </div>

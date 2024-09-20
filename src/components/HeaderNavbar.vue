@@ -27,13 +27,13 @@
           </a>
           <ul v-if="isUserMenuOpen" class="dropdown">
             <li class="dropdown-item">
-              <router-link to="/ProfilUser">Profil</router-link>
+              <router-link to="/ProfilComponent">Profil</router-link>
             </li>
             <li class="dropdown-item">
-              <router-link to="/SettingUser">Paramètres</router-link>
+              <router-link to="/SettingsComponent">Settings</router-link>
             </li>
             <li class="dropdown-item">
-              <router-link to="/PanierUser">Déconnexion</router-link>
+              <router-link to="/PanierUser">Logout</router-link>
             </li>
           </ul>
         </li>
@@ -45,22 +45,22 @@
 </template>
 
 <script>
-export default {
+export default { // mon objet  qui contient les propriétés et méthodes
   name: "HeaderNavbar",
-  data() {
+  data() {  //retourne un objet contenant les données réactives du composant.
     return {
-      isDropdownOpen: false,
-      isUserMenuOpen: false,
+      isDropdownOpen: false, //  indique que le menu déroulant (dropdown) est ouvert ou fermé.
+      isUserMenuOpen: false, // indique si le menu utilisateur (user menu) est ouvert ou fermé.
     };
   },
   mounted() {
-    document.addEventListener("click", this.handleClickOutside);
+    document.addEventListener("click", this.handleClickOutside); //Ici, on attache un écouteur d'événement click
   },
   beforeUnmount() {
     document.removeEventListener("click", this.handleClickOutside);
   },
   methods: {
-    toggleDropdown() {
+    toggleDropdown() { // Cette méthode gère l'ouverture et la fermeture du menu déroulant (dropdown)
       this.isDropdownOpen = !this.isDropdownOpen;
       if (this.isUserMenuOpen) {
         this.isUserMenuOpen = false;
@@ -72,7 +72,7 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    handleClickOutside(event) {
+    handleClickOutside(event) { //Cette méthode est exécutée lorsqu'un clic est effectué quelque part sur le document. Elle vérifie si l'utilisateur a cliqué en dehors des éléments du menu (dropdown ou user menu) et ferme les menus s'ils sont ouverts
       const userMenu = this.$el.querySelector(".user-menu");
       const dropdown = this.$el.querySelector(".dropdown");
       if (
@@ -189,5 +189,54 @@ header {
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 300px;
+}
+.dropdown {
+  position:absolute;
+  display:inline-block;
+}
+/* Bouton pour déclencher le dropdown */
+.dropdown-toggle {
+  background-color: #3498db; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Style de base pour le menu déroulant */
+.dropdown-menu {
+  display: none; /* Masqué par défaut */
+  position: absolute;
+  background-color: #f8f8f8; /* Couleur de fond claire */
+  min-width: 0px; /* Largeur minimale */
+  max-height: 80px; /* Hauteur maximale */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre pour effet de profondeur */
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px 0;
+  overflow-y: auto; /* Permet de scroller si le contenu dépasse la hauteur max */
+  border: 1px solid #ddd; /* Bordure légère */
+}
+
+/* Liens dans le menu */
+.dropdown-menu a, .dropdown-menu router-link {
+  color: #333; /* Couleur du texte */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease; /* Transition douce sur hover */
+}
+
+/* Couleur de fond au survol des éléments */
+.dropdown-menu a:hover, .dropdown-menu router-link:hover {
+  background-color: #3498db; /* Couleur bleue au hover */
+  color: white; /* Couleur du texte au hover */
+}
+
+/* Style du menu quand il est ouvert */
+.dropdown.open .dropdown-menu {
+  display: block;
 }
 </style>
