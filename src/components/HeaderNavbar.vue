@@ -21,10 +21,18 @@
         </li>
       </ul>
       <ul class="navbar-icons">
-        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-        <li><a href="#"><i class="fas fa-heart"></i></a></li>
-        <li><a href="#"><i class="fas fa-user"></i></a></li>
-      </ul>
+  <li @click="toggleUserMenu">
+    <a href="#"><i class="fas fa-user"></i></a>
+    <ul v-if="isUserMenuOpen" class="user-menu">
+      <li class="user-menu-item">Profil</li>
+      <li class="user-menu-item">Paramètres</li>
+      <li class="user-menu-item">Déconnexion</li>
+    </ul>
+  </li>
+  <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+  <li><a href="#"><i class="fas fa-heart"></i></a></li>
+</ul>
+
     </nav>
   </header>
 </template>
@@ -36,15 +44,32 @@ export default {
   data() {
     return {
       isDropdownOpen: false,
+      isUserMenuOpen: false, 
     };
+  },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.handleClickOutside);
   },
   methods: {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
-    }
-  }
+    },
+    toggleUserMenu() {
+      this.isUserMenuOpen = !this.isUserMenuOpen; 
+    },
+    handleClickOutside(event) {
+      const userMenu = this.$el.querySelector(".user-menu");
+      if (userMenu && !userMenu.contains(event.target)) {
+        this.isUserMenuOpen = false; // Ferme le menu si on clique à l'extérieur
+      }
+    },
+  },
 };
 </script>
+
 
 <style scoped>
 /* Style du header */

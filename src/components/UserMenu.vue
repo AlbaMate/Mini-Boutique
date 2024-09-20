@@ -1,7 +1,7 @@
 <template>
   <div class="user-menu">
-    <ul v-if="isOpen" class="user-dropdown">
-      <li>
+    <ul v-if="isDropdownOpen" class="user-dropdown">
+      <li class="dropdown-item">
         <router-link to="/profile">Mon Profil</router-link>
       </li>
       <li>
