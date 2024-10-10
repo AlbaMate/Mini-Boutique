@@ -38,9 +38,41 @@
           </ul>
         </li>
         <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-        <li><a href="#"><i class="fas fa-heart"></i></a></li>
+
+
+        <a href="#" class="favorite-link" @click.prevent="toggleFavoriteModal">
+        <i class="fas fa-heart"></i>
+      </a>
       </ul>
-    </nav>
+<!-- Fenêtre modale des favoris -->
+<div v-if="isFavoriteModalOpen" class="favorite-modal-overlay">
+      <div class="modal-overlay">
+        <div class="modal-header">
+          <h2>Mes Favoris</h2>
+          <button class="close-modal" @click="toggleFavoriteModal">X</button>
+        </div>
+        <div class="modal-body">
+          <div class="favorite-gallery">
+        <ImageCard
+          v-for="(image, index) in favoriteImages"
+          :key="index"
+          :imageSrc="image.src"
+          :altText="image.alt"
+          :title="image.title"
+          :description="image.description"
+        />
+      </div>
+          <p>Aucun favori pour l'instant !</p>
+          <!-- Exemple : <ImageCard v-for="favorite in favorites" :key="favorite.id" :imageSrc="favorite.src" /> -->
+        </div>
+      </div>
+     </div> 
+
+
+
+   </nav>
+
+
   </header>
 </template>
 
@@ -51,6 +83,7 @@ export default { // mon objet  qui contient les propriétés et méthodes
     return {
       isDropdownOpen: false, //  indique que le menu déroulant (dropdown) est ouvert ou fermé.
       isUserMenuOpen: false, // indique si le menu utilisateur (user menu) est ouvert ou fermé.
+      isFavoriteModalOpen: false, // Propriété pour gérer l'ouverture de la modale des favoris
     };
   },
   mounted() {
@@ -71,6 +104,10 @@ export default { // mon objet  qui contient les propriétés et méthodes
       if (this.isDropdownOpen) {
         this.isDropdownOpen = false;
       }
+    },
+    toggleFavoriteModal() {
+      // Gère l'ouverture et la fermeture de la fenêtre modale des favoris
+      this.isFavoriteModalOpen = !this.isFavoriteModalOpen;
     },
     handleClickOutside(event) { //Cette méthode est exécutée lorsqu'un clic est effectué quelque part sur le document. Elle vérifie si l'utilisateur a cliqué en dehors des éléments du menu (dropdown ou user menu) et ferme les menus s'ils sont ouverts
       const userMenu = this.$el.querySelector(".user-menu");
@@ -239,4 +276,36 @@ header {
 .dropdown.open .dropdown-menu {
   display: block;
 }
+.favorite-modal-overlay{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fond transparent noir */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+     
+  }
+  .modal-overlay{
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .modal-header{
+    background: whitesmoke;
+    color: rgb(72, 70, 70);
+    padding: 50px;
+    position: fixed;
+    top: 30%;
+  }
+  .close-modal{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+  }
 </style>
