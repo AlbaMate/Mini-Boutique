@@ -1,6 +1,10 @@
 <template>
   <div class="image-card">
+    <div class="image-wrapper">
     <img :src="imageSrc" :alt="altText" class="image-card-img" />
+    <!-- Ici, on place un slot où l'icône sera injectée par le parent -->
+    <slot></slot>
+  </div>
     <div class="image-card-content">
       <h3>{{ title }}</h3>
       <p>{{ description }}</p>

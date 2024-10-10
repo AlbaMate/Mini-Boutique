@@ -38,7 +38,18 @@
           </ul>
         </li>
         <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+
+        <div class="favorite-icon-container">
+          <div class="bloc-modale">
+      <div class="overlay"></div>
+      <div class="modal card">
+        <div class="btn-modal btn btn-danger"></div>
+
         <li><a href="#"><i class="fas fa-heart"></i></a></li>
+      </div>
+    </div>
+    </div>
+
       </ul>
     </nav>
   </header>
@@ -47,6 +58,7 @@
 <script>
 export default { // mon objet  qui contient les propriétés et méthodes
   name: "HeaderNavbar",
+  
   data() {  //retourne un objet contenant les données réactives du composant.
     return {
       isDropdownOpen: false, //  indique que le menu déroulant (dropdown) est ouvert ou fermé.
@@ -93,6 +105,7 @@ export default { // mon objet  qui contient les propriétés et méthodes
       }
     },
   },
+  
 };
 </script>
 

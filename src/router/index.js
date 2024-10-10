@@ -7,6 +7,7 @@ import VetementsFille from '@/components/VetementsFille.vue';
 import VetementsGarcon from '@/components/VetementsGarcon.vue';
 import SettingsComponent from '@/components/SettingsComponent.vue';
 import ProfilComponent from '@/components/ProfilComponent.vue';
+import MesFavoris from '@/views/MesFavoris.vue';
 
 const routes = [
   {
@@ -43,7 +44,13 @@ const routes = [
     path: '/profilComponent',
     name: 'ProfilComponent',
     component: ProfilComponent
-  }
+  },
+  {
+  path: '/favoris',
+  name: 'MesFavoris',
+  component: MesFavoris,
+  props: route => ({ images: route.params.images }) // Passe les images comme props
+}
 ];
 
 const router = createRouter({
