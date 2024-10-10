@@ -1,5 +1,5 @@
 <template>
-   <div id="app">
+  <div id="app">
     <img alt="Vue vêtement" src="@/assets/pret-a-porter-accueil-2.jpg" class="main-image" />
   </div>
   <div class="home-info">
@@ -8,6 +8,7 @@
       <h1>TOP SELECTION</h1>
     </div>
     <div class="image-gallery">
+      <!-- Utilisation correcte de la balise ImageCard avec un slot -->
       <ImageCard
         v-for="(image, index) in images"
         :key="index"
@@ -15,14 +16,22 @@
         :altText="image.alt"
         :title="image.title"
         :description="image.description"
-      />
+        @click="navigate(image.routeName)"
+      >
+        <!-- Ici, tu injectes l'icône dans le slot -->
+        <i
+          :class="image.isFavorite ? 'fas fa-heart favorite' : 'far fa-heart'"
+          @click.stop="toggleFavorite(index)"  
+          class="favorite-icon"
+        ></i>
+      </ImageCard>
     </div>
   </div>
-  
-</template> 
+</template>
+
 
 <script>
-import ImageCard from '@/components/ImageCard.vue'; // Vérifie le chemin
+import ImageCard from '@/components/ImageCard.vue'; 
 
 export default {
   name: 'HomeInfo',
@@ -36,50 +45,78 @@ export default {
           src: require('@/assets/image1.jpg'),
           alt: 'Pantalon 1',
           title: 'Pantalon 1',
-          description: 'Description du pantalon 1'
+          description: 'Description du pantalon 1',
+          routeName: 'VetementsGarcon',
+          isFavorite: false,
         },
         {
           src: require('@/assets/image2.jpeg'),
           alt: 'Pantalon 2',
           title: 'Pantalon 2',
-          description: 'Description du pantalon 2'
+          description: 'Description du pantalon 2',
+          routeName: 'VetementsFille',
+          isFavorite: false 
         },
         {
           src: require('@/assets/image3.webp'),
           alt: 'Pantalon 3',
           title: 'Pantalon 3',
           description: 'Description du pantalon 3',
+          routeName: 'VetementsFille',
+          isFavorite: false // Nouvelle propriété: l'image n'est pas favorite au départ
         },
         {
           src: require('@/assets/image4.webp'),
           alt: 'Pantalon 4',
           title: 'Pantalon 4',
-          description: 'Description du pantalon 4'
+          description: 'Description du pantalon 4',
+          routeName: 'VetementsFille',
+          isFavorite: false 
         },
         { 
           src: require('@/assets/image5.webp'),
           alt: 'Pantalon 5',
           title: 'Pantalon 5',
-          description: 'Description du pantalon 5'
-
+          description: 'Description du pantalon 5',
+          routeName: 'VetementsFille',
+          isFavorite: false 
         },
         {
           src: require('@/assets/image6.jpg'),
           alt: 'Pantalon 6',
           title: 'Pantalon 6',
-          description: 'Description du pantalon 6'
+          description: 'Description du pantalon 6',
+          routeName: 'VetementsFille',
+          isFavorite: false 
         },
         {
           src: require('@/assets/image7.webp'),
           alt: 'Pantalon 7',
           title: 'Pantalon 7',
-          description: 'Description du pantalon 7'
+          description: 'Description du pantalon 7',
+          routeName: 'VetementsFille',
+          isFavorite: false 
         }
       ]
     };
+  },
+  methods: {
+    navigate(routeName) {
+      if (routeName) { 
+        this.$router.push({ name: routeName });
+      } else {
+        console.warn('Route name is missing for this item.');
+      }
+    },
+    toggleFavorite(index) {
+      this.images[index].isFavorite = !this.images[index].isFavorite; 
+    }
   }
 };
 </script>
+
+
+
 
 <style scoped>
 .home-info {
